@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Beatzo - Profile</title>
+
+    <link rel="stylesheet"
+          href="profile.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- Background -->
+
+    <div class="profile-bg">
+        <div class="bg-glow"></div>
+    </div>
+
+
+    <!-- Header -->
+
+    <header class="profile-header">
+
+        <a href="index.html"
+           class="profile-logo">
+
+            <span>
+                <i class="fa-solid fa-headphones"></i>
+            </span>
+
+            Beatzo
+
+        </a>
+
+
+        <a href="index.html"
+           class="home-btn">
+
+            <i class="fa-solid fa-house"></i>
+
+            Back to Music
+
+        </a>
+
+    </header>
+
+
+    <!-- Profile -->
+
+    <main class="profile-container">
+
+
+        <!-- Profile Hero -->
+
+        <section class="profile-hero">
+
+            <div class="avatar">
+
+                <span id="avatarLetter">
+                    B
+                </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <span class="profile-label">
+                    BEATZO MEMBER
+                </span>
+
+                <h1 id="profileName">
+                    Beatzo User
+                </h1>
+
+                <p id="profileEmail">
+                    user@beatzo.com
+                </p>
+
+                <span class="member-badge">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Active Member
+
+                </span>
+
+            </div>
+
+
+            <button
+                class="edit-btn"
+                id="editProfile">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Edit Profile
+
+            </button>
+
+        </section>
+
+
+        <!-- Stats -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div>
+                    <strong>24</strong>
+                    <span>Liked Songs</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-list-music"></i>
+                </div>
+
+                <div>
+                    <strong>8</strong>
+                    <span>Playlists</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+                    <strong>126</strong>
+                    <span>Recently Played</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Account -->
+
+        <section class="profile-section">
+
+            <div class="section-title">
+
+                <div>
+                    <span>ACCOUNT</span>
+                    <h2>Profile Information</h2>
+                </div>
+
+            </div>
+
+
+            <div class="information-grid">
+
+                <div class="info-card">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    <div>
+                        <span>Full Name</span>
+
+                        <strong id="infoName">
+                            Beatzo User
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <div>
+                        <span>Email Address</span>
+
+                        <strong id="infoEmail">
+                            user@beatzo.com
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    <div>
+                        <span>Member Since</span>
+
+                        <strong>September 2026</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <div>
+                        <span>Account Type</span>
+
+                        <strong>Free Member</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Preferences -->
+
+        <section class="profile-section">
+
+            <div class="section-title">
+
+                <div>
+                    <span>SETTINGS</span>
+                    <h2>Preferences</h2>
+                </div>
+
+            </div>
+
+
+            <div class="settings-list">
+
+
+                <div class="setting">
+
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+
+                    <div class="setting-text">
+
+                        <strong>
+                            Notifications
+                        </strong>
+
+                        <span>
+                            Receive updates about new music
+                        </span>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked>
+
+                        <span></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting">
+
+                    <div class="setting-icon">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+
+                    <div class="setting-text">
+
+                        <strong>
+                            Data Saver
+                        </strong>
+
+                        <span>
+                            Reduce data usage while streaming
+                        </span>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input type="checkbox">
+
+                        <span></span>
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- Logout -->
+
+        <button
+            class="logout-btn"
+            id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Sign Out
+
+        </button>
+
+
+    </main>
+
+
+    <script src="profile.js"></script>
+
+</body>
+
+</html>

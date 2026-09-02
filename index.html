@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beatzo - Music Player</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-headphones"></i>
+            </div>
+
+            <span>Beatzo</span>
+        </div>
+
+
+        <!-- Main Navigation -->
+        <nav class="main-nav">
+
+            <a href="#" class="active" id="homeLink">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="#" id="searchLink">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Search</span>
+            </a>
+
+            <a href="#" id="libraryLink">
+                <i class="fa-solid fa-book"></i>
+                <span>Your Library</span>
+            </a>
+
+        </nav>
+
+
+        <div class="menu-title">
+            YOUR MUSIC
+        </div>
+
+
+        <!-- Music Navigation -->
+        <nav>
+
+            <a href="#" id="likedLink">
+                <i class="fa-solid fa-heart"></i>
+                <span>Liked Songs</span>
+            </a>
+
+            <a href="#" id="recentLink">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Recently Played</span>
+            </a>
+
+            <a href="#" id="playlistLink">
+                <i class="fa-solid fa-music"></i>
+                <span>Playlists</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+        <div class="sidebar-bottom">
+
+            <div class="premium-box">
+
+                <i class="fa-solid fa-crown"></i>
+
+                <h4>Upgrade Music</h4>
+
+                <p>Enjoy more features with Beatzo.</p>
+
+                <button>
+                    Upgrade
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+    <main class="main">
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+        <header class="header">
+
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search songs, artists..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <a href="profile.html"
+                class="profile"
+                id="profileLink"
+                title="Profile">
+
+                <i class="fa-solid fa-user"></i>
+
+            </a>
+
+        </header>
+
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-label">
+                    WELCOME TO
+                </p>
+
+                <h1>
+                    Beatzo
+                </h1>
+
+                <h2>
+                    Feel the Beat. Live the Music.
+                </h2>
+
+                <p class="hero-text">
+                    Discover your favorite songs, explore new sounds,
+                    create playlists and enjoy music anytime.
+                </p>
+
+                <button class="explore-btn" id="exploreBtn">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    Explore Music
+
+                </button>
+
+            </div>
+
+
+            <div class="hero-disc">
+
+                <div class="disc">
+
+                    <i class="fa-solid fa-music"></i>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DYNAMIC SECTION
+        ========================== -->
+        <section
+            class="dynamic-section"
+            id="dynamicSection">
+
+            <div class="dynamic-header">
+
+                <div>
+                    <p class="section-label">
+                        BEATZO
+                    </p>
+
+                    <h2 id="dynamicTitle">
+                        Your Library
+                    </h2>
+                </div>
+
+                <button
+                    id="closeDynamic"
+                    class="close-dynamic">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="dynamic-content"
+                id="dynamicContent">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             TRENDING SONGS
+        ========================== -->
+        <section class="music-section" id="trendingSection">
+
+            <div class="section-header">
+
+                <div>
+
+                    <p class="section-label">
+                        LISTEN NOW
+                    </p>
+
+                    <h2>
+                        Trending Songs
+                    </h2>
+
+                </div>
+
+                <span id="seeAllSongs">
+                    See All
+                </span>
+
+            </div>
+
+
+            <div
+                class="song-grid"
+                id="songList">
+
+
+                <!-- Song 1 -->
+                <div
+                    class="song-card"
+                    data-title="Midnight Dreams"
+                    data-artist="Luna">
+
+                    <div class="album album-1">
+
+                        <i class="fa-solid fa-music"></i>
+
+                        <button class="card-play">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </button>
+
+                    </div>
+
+                    <h3>
+                        Midnight Dreams
+                    </h3>
+
+                    <p>
+                        Luna
+                    </p>
+
+                </div>
+
+
+                <!-- Song 2 -->
+                <div
+                    class="song-card"
+                    data-title="Neon Lights"
+                    data-artist="Alex Ray">
+
+                    <div class="album album-2">
+
+                        <i class="fa-solid fa-music"></i>
+
+                        <button class="card-play">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </button>
+
+                    </div>
+
+                    <h3>
+                        Neon Lights
+                    </h3>
+
+                    <p>
+                        Alex Ray
+                    </p>
+
+                </div>
+
+
+                <!-- Song 3 -->
+                <div
+                    class="song-card"
+                    data-title="Ocean Waves"
+                    data-artist="Maya">
+
+                    <div class="album album-3">
+
+                        <i class="fa-solid fa-music"></i>
+
+                        <button class="card-play">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </button>
+
+                    </div>
+
+                    <h3>
+                        Ocean Waves
+                    </h3>
+
+                    <p>
+                        Maya
+                    </p>
+
+                </div>
+
+
+                <!-- Song 4 -->
+                <div
+                    class="song-card"
+                    data-title="Lost In Time"
+                    data-artist="Nova">
+
+                    <div class="album album-4">
+
+                        <i class="fa-solid fa-music"></i>
+
+                        <button class="card-play">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </button>
+
+                    </div>
+
+                    <h3>
+                        Lost In Time
+                    </h3>
+
+                    <p>
+                        Nova
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="no-results"
+                id="noResults">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <h3>
+                    No songs found
+                </h3>
+
+                <p>
+                    Try searching for another song or artist.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             POPULAR ARTISTS
+        ========================== -->
+        <section class="music-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <p class="section-label">
+                        DISCOVER
+                    </p>
+
+                    <h2>
+                        Popular Artists
+                    </h2>
+
+                </div>
+
+                <span>
+                    See All
+                </span>
+
+            </div>
+
+
+            <div class="artist-grid">
+
+
+                <div class="artist">
+
+                    <div class="artist-image">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h3>
+                        Aria
+                    </h3>
+
+                    <p>
+                        Artist
+                    </p>
+
+                </div>
+
+
+                <div class="artist">
+
+                    <div class="artist-image">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h3>
+                        Nova
+                    </h3>
+
+                    <p>
+                        Artist
+                    </p>
+
+                </div>
+
+
+                <div class="artist">
+
+                    <div class="artist-image">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h3>
+                        Luna
+                    </h3>
+
+                    <p>
+                        Artist
+                    </p>
+
+                </div>
+
+
+                <div class="artist">
+
+                    <div class="artist-image">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h3>
+                        Alex Ray
+                    </h3>
+
+                    <p>
+                        Artist
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bottom spacing -->
+        <div class="bottom-space"></div>
+
+    </main>
+
+
+
+    <!-- =========================
+         MUSIC PLAYER
+    ========================== -->
+    <footer class="player">
+
+
+        <!-- Current Song -->
+        <div class="now-playing">
+
+            <div class="mini-album">
+
+                <i class="fa-solid fa-music"></i>
+
+            </div>
+
+
+            <div class="current-song-info">
+
+                <h4 id="currentTitle">
+                    Select a song
+                </h4>
+
+                <p id="currentArtist">
+                    Beatzo
+                </p>
+
+            </div>
+
+
+            <button
+                id="likeBtn"
+                class="player-like">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- Player Controls -->
+        <div class="player-center">
+
+            <div class="controls">
+
+                <button id="prevBtn">
+                    <i class="fa-solid fa-backward-step"></i>
+                </button>
+
+
+                <button
+                    class="play-btn"
+                    id="playBtn">
+
+                    <i class="fa-solid fa-play"></i>
+
+                </button>
+
+
+                <button id="nextBtn">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+                <input
+                    type="range"
+                    id="progress"
+                    min="0"
+                    max="225"
+                    value="0">
+
+                <span id="duration">
+                    0:00
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Volume -->
+        <div class="volume">
+
+            <i class="fa-solid fa-volume-high"></i>
+
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="100"
+                value="70">
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
