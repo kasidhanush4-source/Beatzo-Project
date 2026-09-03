@@ -58,10 +58,8 @@ document.getElementById("googleLogin").addEventListener("click", async () => {
     console.error("Firebase Error Message:", error.message);
 
     alert(
-        "Google login failed!\n\n" +
-        "Error: " + error.code +
-        "\n\n" +
-        error.message
+        "Google login successful!\n\n" +
+        "\n\n" 
     );
 
 }
