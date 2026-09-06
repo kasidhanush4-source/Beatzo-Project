@@ -1,632 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Beatzo - Music Player</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         BACKGROUND
-    ========================== -->
-    <div class="background-glow glow-1"></div>
-    <div class="background-glow glow-2"></div>
+<!-- Background Effects -->
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+<div class="bg-orb orb-3"></div>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">
+            <i class="fa-solid fa-headphones"></i>
+        </div>
+        <span>Beatzo</span>
+    </div>
+
+    <nav class="main-nav">
+
+        <a href="#home" class="nav-link active" id="homeLink">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="#songs" class="nav-link" id="searchLink">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+        </a>
+
+        <a href="#library" class="nav-link" id="libraryLink">
+            <i class="fa-solid fa-book"></i>
+            <span>Your Library</span>
+        </a>
+
+    </nav>
+
+    <div class="menu-title">YOUR MUSIC</div>
+
+    <nav class="main-nav">
+
+        <a href="#songs" class="nav-link" id="likedLink">
+            <i class="fa-solid fa-heart"></i>
+            <span>Liked Songs</span>
+            <small id="likedCount">0</small>
+        </a>
+
+        <a href="#songs" class="nav-link" id="recentLink">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Recently Played</span>
+        </a>
+
+        <a href="#playlists" class="nav-link" id="playlistLink">
+            <i class="fa-solid fa-music"></i>
+            <span>Playlists</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-languages">
+
+        <div class="menu-title">LANGUAGES</div>
+
+        <button data-language="Tamil">Tamil</button>
+        <button data-language="Malayalam">Malayalam</button>
+        <button data-language="Telugu">Telugu</button>
+        <button data-language="Kannada">Kannada</button>
+        <button data-language="Hindi">Hindi</button>
+        <button data-language="English">English</button>
+
+    </div>
+
+    <div class="sidebar-bottom">
+        <i class="fa-solid fa-wave-square"></i>
+        <span>Feel the Beat</span>
+    </div>
+
+</aside>
 
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
-    <aside class="sidebar">
+<!-- ================= MAIN ================= -->
 
-        <div class="logo">
-            <div class="logo-icon">
-                <i class="fa-solid fa-headphones"></i>
-            </div>
+<main class="main" id="home">
 
-            <span>Beatzo</span>
+    <!-- Header -->
+
+    <header class="header">
+
+        <div class="mobile-logo">
+            <i class="fa-solid fa-headphones"></i>
+            Beatzo
         </div>
 
+        <div class="search-box">
 
-        <!-- Main Navigation -->
-        <nav class="main-nav">
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-            <a href="#" class="active" id="homeLink">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
-            </a>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search songs, artists or languages..."
+            >
 
-            <a href="#" id="searchLink">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Search</span>
-            </a>
-
-            <a href="#" id="libraryLink">
-                <i class="fa-solid fa-book"></i>
-                <span>Your Library</span>
-            </a>
-
-        </nav>
-
-
-        <div class="menu-title">
-            YOUR MUSIC
-        </div>
-
-
-        <!-- Music Navigation -->
-        <nav>
-
-            <a href="#" id="likedLink">
-                <i class="fa-solid fa-heart"></i>
-                <span>Liked Songs</span>
-            </a>
-
-            <a href="#" id="recentLink">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>Recently Played</span>
-            </a>
-
-            <a href="#" id="playlistLink">
-                <i class="fa-solid fa-music"></i>
-                <span>Playlists</span>
-            </a>
-
-        </nav>
-
-
-        <!-- Sidebar Bottom -->
-        <div class="sidebar-bottom">
-
-            <div class="premium-box">
-
-                <i class="fa-solid fa-crown"></i>
-
-                <h4>Upgrade Music</h4>
-
-                <p>Enjoy more features with Beatzo.</p>
-
-                <button>
-                    Upgrade
-                </button>
-
-            </div>
+            <button id="clearSearch">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
         </div>
 
-    </aside>
+        <a href="profile.html" class="profile" id="profileLink">
+            <i class="fa-solid fa-user"></i>
+        </a>
+
+    </header>
 
 
+    <!-- ================= HERO ================= -->
 
-    <!-- =========================
-         MAIN
-    ========================== -->
-    <main class="main">
+    <section class="hero">
 
+        <div class="hero-content">
 
-        <!-- =========================
-             HEADER
-        ========================== -->
-        <header class="header">
-
-            <div class="mobile-menu" id="mobileMenu">
-                <i class="fa-solid fa-bars"></i>
+            <div class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i>
+                MUSIC FOR EVERY MOOD
             </div>
 
+            <p class="welcome">WELCOME TO</p>
 
-            <div class="search-box">
+            <h1>Beat<span>zo</span></h1>
 
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <h2>
+                Feel the Beat.
+                <br>
+                Live the Music.
+            </h2>
 
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search songs, artists..."
-                    autocomplete="off">
+            <p class="hero-text">
+                Discover music from Tamil, Malayalam, Telugu,
+                Kannada, Hindi and English artists.
+            </p>
 
-            </div>
+            <button class="explore-btn" id="exploreBtn">
+                <i class="fa-solid fa-play"></i>
+                Explore Music
+            </button>
 
+        </div>
 
-            <a href="profile.html"
-                class="profile"
-                id="profileLink"
-                title="Profile">
+        <div class="hero-visual">
 
-                <i class="fa-solid fa-user"></i>
+            <div class="music-ring ring-1"></div>
+            <div class="music-ring ring-2"></div>
 
-            </a>
-
-        </header>
-
-
-
-        <!-- =========================
-             HERO
-        ========================== -->
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <p class="hero-label">
-                    WELCOME TO
-                </p>
-
-                <h1>
-                    Beatzo
-                </h1>
-
-                <h2>
-                    Feel the Beat. Live the Music.
-                </h2>
-
-                <p class="hero-text">
-                    Discover your favorite songs, explore new sounds,
-                    create playlists and enjoy music anytime.
-                </p>
-
-                <button class="explore-btn" id="exploreBtn">
-
-                    <i class="fa-solid fa-play"></i>
-
-                    Explore Music
-
-                </button>
-
-            </div>
-
-
-            <div class="hero-disc">
-
-                <div class="disc">
-
+            <div class="disc">
+                <div class="disc-center">
                     <i class="fa-solid fa-music"></i>
-
                 </div>
-
             </div>
 
-        </section>
+            <div class="floating-note note-1">
+                ♪
+            </div>
+
+            <div class="floating-note note-2">
+                ♫
+            </div>
+
+            <div class="floating-note note-3">
+                ♪
+            </div>
+
+        </div>
+
+    </section>
 
 
+    <!-- ================= LANGUAGE FILTER ================= -->
 
-        <!-- =========================
-             DYNAMIC SECTION
-        ========================== -->
-        <section
-            class="dynamic-section"
-            id="dynamicSection">
+    <section class="language-section">
 
-            <div class="dynamic-header">
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">EXPLORE</p>
+                <h2>Choose Your Language</h2>
+            </div>
+
+            <span id="songCounter">24 songs</span>
+
+        </div>
+
+        <div class="language-filters" id="languageFilters">
+
+            <button class="language-btn active" data-language="All">
+                <span>🌎</span>
+                All
+            </button>
+
+            <button class="language-btn" data-language="Tamil">
+                <span>🇮🇳</span>
+                Tamil
+            </button>
+
+            <button class="language-btn" data-language="Malayalam">
+                <span>🇮🇳</span>
+                Malayalam
+            </button>
+
+            <button class="language-btn" data-language="Telugu">
+                <span>🇮🇳</span>
+                Telugu
+            </button>
+
+            <button class="language-btn" data-language="Kannada">
+                <span>🇮🇳</span>
+                Kannada
+            </button>
+
+            <button class="language-btn" data-language="Hindi">
+                <span>🇮🇳</span>
+                Hindi
+            </button>
+
+            <button class="language-btn" data-language="English">
+                <span>🌍</span>
+                English
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SONGS ================= -->
+
+    <section class="music-section" id="songs">
+
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">DISCOVER</p>
+                <h2 id="songSectionTitle">Trending Songs</h2>
+            </div>
+
+            <button class="see-all" id="seeAllBtn">
+                See All
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+        <div class="song-grid" id="songList"></div>
+
+        <div class="empty-state" id="emptyState">
+
+            <i class="fa-solid fa-music"></i>
+
+            <h3>No songs found</h3>
+
+            <p>
+                Try another song, artist or language.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LIBRARY ================= -->
+
+    <section class="library-section" id="library">
+
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">YOUR COLLECTION</p>
+                <h2>Your Library</h2>
+            </div>
+
+        </div>
+
+        <div class="library-cards">
+
+            <div class="library-card" id="likedLibrary">
+
+                <div class="library-icon heart-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
 
                 <div>
-                    <p class="section-label">
-                        BEATZO
+                    <h3>Liked Songs</h3>
+                    <p>
+                        <span id="likedLibraryCount">0</span>
+                        liked songs
                     </p>
-
-                    <h2 id="dynamicTitle">
-                        Your Library
-                    </h2>
                 </div>
 
-                <button
-                    id="closeDynamic"
-                    class="close-dynamic">
-
-                    <i class="fa-solid fa-xmark"></i>
-
-                </button>
+                <i class="fa-solid fa-chevron-right"></i>
 
             </div>
 
 
-            <div
-                class="dynamic-content"
-                id="dynamicContent">
+            <div class="library-card" id="recentLibrary">
 
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             TRENDING SONGS
-        ========================== -->
-        <section class="music-section" id="trendingSection">
-
-            <div class="section-header">
+                <div class="library-icon recent-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
 
                 <div>
-
-                    <p class="section-label">
-                        LISTEN NOW
-                    </p>
-
-                    <h2>
-                        Trending Songs
-                    </h2>
-
+                    <h3>Recently Played</h3>
+                    <p>Your listening history</p>
                 </div>
 
-                <span id="seeAllSongs">
-                    See All
-                </span>
+                <i class="fa-solid fa-chevron-right"></i>
 
             </div>
 
 
-            <div
-                class="song-grid"
-                id="songList">
+            <div class="library-card">
 
-
-                <!-- Song 1 -->
-                <div
-                    class="song-card"
-                    data-title="Midnight Dreams"
-                    data-artist="Luna">
-
-                    <div class="album album-1">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Midnight Dreams
-                    </h3>
-
-                    <p>
-                        Luna
-                    </p>
-
+                <div class="library-icon playlist-icon">
+                    <i class="fa-solid fa-list-music"></i>
                 </div>
-
-
-                <!-- Song 2 -->
-                <div
-                    class="song-card"
-                    data-title="Neon Lights"
-                    data-artist="Alex Ray">
-
-                    <div class="album album-2">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Neon Lights
-                    </h3>
-
-                    <p>
-                        Alex Ray
-                    </p>
-
-                </div>
-
-
-                <!-- Song 3 -->
-                <div
-                    class="song-card"
-                    data-title="Ocean Waves"
-                    data-artist="Maya">
-
-                    <div class="album album-3">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Ocean Waves
-                    </h3>
-
-                    <p>
-                        Maya
-                    </p>
-
-                </div>
-
-
-                <!-- Song 4 -->
-                <div
-                    class="song-card"
-                    data-title="Lost In Time"
-                    data-artist="Nova">
-
-                    <div class="album album-4">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Lost In Time
-                    </h3>
-
-                    <p>
-                        Nova
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="no-results"
-                id="noResults">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <h3>
-                    No songs found
-                </h3>
-
-                <p>
-                    Try searching for another song or artist.
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             POPULAR ARTISTS
-        ========================== -->
-        <section class="music-section">
-
-            <div class="section-header">
 
                 <div>
-
-                    <p class="section-label">
-                        DISCOVER
-                    </p>
-
-                    <h2>
-                        Popular Artists
-                    </h2>
-
+                    <h3>My Playlist</h3>
+                    <p>Your personal collection</p>
                 </div>
 
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ARTISTS ================= -->
+
+    <section class="music-section">
+
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">DISCOVER</p>
+                <h2>Popular Artists</h2>
+            </div>
+
+            <span>Across Languages</span>
+
+        </div>
+
+        <div class="artist-grid">
+
+            <div class="artist-card">
+                <div class="artist-image artist-purple">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <h3>Anirudh Ravichander</h3>
+                <p>Tamil</p>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-image artist-blue">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <h3>Vijay Yesudas</h3>
+                <p>Malayalam</p>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-image artist-pink">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <h3>Sid Sriram</h3>
+                <p>Telugu</p>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-image artist-orange">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <h3>Sonu Nigam</h3>
+                <p>Kannada / Hindi</p>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-image artist-green">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <h3>Arijit Singh</h3>
+                <p>Hindi</p>
+            </div>
+
+            <div class="artist-card">
+                <div class="artist-image artist-cyan">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <h3>The Weeknd</h3>
+                <p>English</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PLAYLIST ================= -->
+
+    <section class="playlist-section" id="playlists">
+
+        <div class="playlist-banner">
+
+            <div>
+                <p>CREATE YOUR VIBE</p>
+                <h2>Your music. Your playlist.</h2>
                 <span>
-                    See All
+                    Save your favorite tracks and create your own collection.
                 </span>
-
             </div>
 
+            <button id="createPlaylistBtn">
+                <i class="fa-solid fa-plus"></i>
+                Create Playlist
+            </button>
 
-            <div class="artist-grid">
+        </div>
 
+    </section>
 
-                <div class="artist">
-
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <h3>
-                        Aria
-                    </h3>
-
-                    <p>
-                        Artist
-                    </p>
-
-                </div>
+</main>
 
 
-                <div class="artist">
+<!-- ================= MUSIC PLAYER ================= -->
 
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+<footer class="player">
 
-                    <h3>
-                        Nova
-                    </h3>
+    <div class="now-playing">
 
-                    <p>
-                        Artist
-                    </p>
+        <div class="mini-album" id="miniAlbum">
+            <i class="fa-solid fa-music"></i>
+        </div>
 
-                </div>
+        <div class="track-info">
 
+            <h4 id="currentTitle">
+                Select a song
+            </h4>
 
-                <div class="artist">
+            <p id="currentArtist">
+                Beatzo
+            </p>
 
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+            <span id="currentLanguage">
+                Music Player
+            </span>
 
-                    <h3>
-                        Luna
-                    </h3>
+        </div>
 
-                    <p>
-                        Artist
-                    </p>
+        <button id="likeBtn" title="Like song">
+            <i class="fa-regular fa-heart"></i>
+        </button>
 
-                </div>
-
-
-                <div class="artist">
-
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <h3>
-                        Alex Ray
-                    </h3>
-
-                    <p>
-                        Artist
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
+    </div>
 
 
-        <!-- Bottom spacing -->
-        <div class="bottom-space"></div>
+    <div class="player-center">
 
-    </main>
+        <div class="controls">
 
+            <button id="shuffleBtn" title="Shuffle">
+                <i class="fa-solid fa-shuffle"></i>
+            </button>
 
+            <button id="prevBtn" title="Previous">
+                <i class="fa-solid fa-backward-step"></i>
+            </button>
 
-    <!-- =========================
-         MUSIC PLAYER
-    ========================== -->
-    <footer class="player">
+            <button class="play-btn" id="playBtn" title="Play">
+                <i class="fa-solid fa-play"></i>
+            </button>
 
+            <button id="nextBtn" title="Next">
+                <i class="fa-solid fa-forward-step"></i>
+            </button>
 
-        <!-- Current Song -->
-        <div class="now-playing">
-
-            <div class="mini-album">
-
-                <i class="fa-solid fa-music"></i>
-
-            </div>
-
-
-            <div class="current-song-info">
-
-                <h4 id="currentTitle">
-                    Select a song
-                </h4>
-
-                <p id="currentArtist">
-                    Beatzo
-                </p>
-
-            </div>
-
-
-            <button
-                id="likeBtn"
-                class="player-like">
-
-                <i class="fa-regular fa-heart"></i>
-
+            <button id="repeatBtn" title="Repeat">
+                <i class="fa-solid fa-repeat"></i>
             </button>
 
         </div>
 
 
+        <div class="progress-container">
 
-        <!-- Player Controls -->
-        <div class="player-center">
-
-            <div class="controls">
-
-                <button id="prevBtn">
-                    <i class="fa-solid fa-backward-step"></i>
-                </button>
-
-
-                <button
-                    class="play-btn"
-                    id="playBtn">
-
-                    <i class="fa-solid fa-play"></i>
-
-                </button>
-
-
-                <button id="nextBtn">
-                    <i class="fa-solid fa-forward-step"></i>
-                </button>
-
-            </div>
-
-
-            <div class="progress-container">
-
-                <span id="currentTime">
-                    0:00
-                </span>
-
-                <input
-                    type="range"
-                    id="progress"
-                    min="0"
-                    max="225"
-                    value="0">
-
-                <span id="duration">
-                    0:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Volume -->
-        <div class="volume">
-
-            <i class="fa-solid fa-volume-high"></i>
+            <span id="currentTime">
+                0:00
+            </span>
 
             <input
                 type="range"
-                id="volume"
+                id="progress"
                 min="0"
                 max="100"
-                value="70">
+                value="0"
+            >
+
+            <span id="duration">
+                0:00
+            </span>
 
         </div>
 
-    </footer>
+    </div>
 
 
+    <div class="volume">
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+        <i class="fa-solid fa-volume-high"></i>
+
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="70"
+        >
+
+    </div>
+
+</footer>
+
+
+<!-- Toast -->
+<div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span>Added to liked songs</span>
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
