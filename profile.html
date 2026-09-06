@@ -2,339 +2,274 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatzo - Member Profile</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Beatzo - Profile</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="profile.css">
 
-    <link rel="stylesheet"
-          href="profile.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 
 <body>
 
+    <!-- Dynamic Ambient Background Glows -->
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+    <div class="background-glow glow-3"></div>
 
-    <!-- Background -->
+    <!-- Floating Stardust Canvas -->
+    <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
 
-    <div class="profile-bg">
-        <div class="bg-glow"></div>
-    </div>
-
-
-    <!-- Header -->
-
+    <!-- Header Navigation -->
     <header class="profile-header">
-
-        <a href="index.html"
-           class="profile-logo">
-
-            <span>
+        <a href="index.html" class="profile-logo">
+            <div class="logo-icon">
                 <i class="fa-solid fa-headphones"></i>
-            </span>
-
-            Beatzo
-
+            </div>
+            <span>Beatzo<span class="logo-accent">.</span></span>
         </a>
 
-
-        <a href="index.html"
-           class="home-btn">
-
-            <i class="fa-solid fa-house"></i>
-
-            Back to Music
-
+        <a href="index.html" class="back-home-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Music</span>
         </a>
-
     </header>
 
-
-    <!-- Profile -->
-
+    <!-- Main Container -->
     <main class="profile-container">
 
-
-        <!-- Profile Hero -->
-
+        <!-- Profile Hero Card -->
         <section class="profile-hero">
 
-            <div class="avatar">
-
-                <span id="avatarLetter">
-                    B
-                </span>
-
+            <div class="avatar-wrap">
+                <div class="avatar" id="avatarBox">
+                    <span id="avatarLetter">B</span>
+                </div>
+                <div class="vip-crown-badge" title="Hi-Fi Member">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
             </div>
-
 
             <div class="profile-info">
+                <div class="profile-badge-row">
+                    <span class="member-badge">
+                        <i class="fa-solid fa-circle-check"></i> VIP Active Member
+                    </span>
+                    <span class="hifi-pill">Hi-Fi 320kbps</span>
+                </div>
 
-                <span class="profile-label">
-                    BEATZO MEMBER
-                </span>
+                <h1 id="profileName">Beatzo Listener</h1>
+                <p id="profileEmail">listener@beatzo.com</p>
 
-                <h1 id="profileName">
-                    Beatzo User
-                </h1>
-
-                <p id="profileEmail">
-                    user@beatzo.com
-                </p>
-
-                <span class="member-badge">
-
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    Active Member
-
-                </span>
-
+                <div class="profile-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Member since <strong id="memberSince">September 2026</strong></span>
+                    <span><i class="fa-solid fa-globe"></i> 6 Languages Enabled</span>
+                </div>
             </div>
 
-
-            <button
-                class="edit-btn"
-                id="editProfile">
-
-                <i class="fa-solid fa-pen"></i>
-
-                Edit Profile
-
-            </button>
+            <div class="profile-actions">
+                <button class="edit-profile-btn" id="editProfileBtn">
+                    <i class="fa-solid fa-pen"></i> Edit Profile
+                </button>
+                <button class="share-btn" id="shareProfileBtn" title="Share Profile">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </button>
+            </div>
 
         </section>
 
 
-        <!-- Stats -->
-
-        <section class="stats">
+        <!-- Live Streaming Stats Grid -->
+        <section class="stats-grid">
 
             <div class="stat-card">
-
-                <div class="stat-icon">
+                <div class="stat-icon-wrap stat-pink">
                     <i class="fa-solid fa-heart"></i>
                 </div>
-
-                <div>
-                    <strong>24</strong>
+                <div class="stat-content">
+                    <strong id="statLikedCount">0</strong>
                     <span>Liked Songs</span>
                 </div>
-
             </div>
 
-
             <div class="stat-card">
-
-                <div class="stat-icon">
-                    <i class="fa-solid fa-list-music"></i>
+                <div class="stat-icon-wrap stat-purple">
+                    <i class="fa-solid fa-music"></i>
                 </div>
-
-                <div>
+                <div class="stat-content">
                     <strong>8</strong>
-                    <span>Playlists</span>
+                    <span>Curated Playlists</span>
                 </div>
-
             </div>
-
 
             <div class="stat-card">
-
-                <div class="stat-icon">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
+                <div class="stat-icon-wrap stat-cyan">
+                    <i class="fa-solid fa-clock"></i>
                 </div>
-
-                <div>
-                    <strong>126</strong>
-                    <span>Recently Played</span>
+                <div class="stat-content">
+                    <strong>18.4 hrs</strong>
+                    <span>Stream Time</span>
                 </div>
+            </div>
 
+            <div class="stat-card">
+                <div class="stat-icon-wrap stat-amber">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="stat-content">
+                    <strong>6 Regions</strong>
+                    <span>Languages Explored</span>
+                </div>
             </div>
 
         </section>
 
 
-        <!-- Account -->
-
+        <!-- User's Liked Tracks Spotlight (Dynamic with Exact Artwork) -->
         <section class="profile-section">
-
-            <div class="section-title">
-
+            <div class="section-header">
                 <div>
-                    <span>ACCOUNT</span>
-                    <h2>Profile Information</h2>
+                    <span class="section-tag">SAVED COLLECTION</span>
+                    <h2>Favorite Tracks</h2>
                 </div>
-
+                <a href="index.html" class="see-all-link">Browse Full Catalog</a>
             </div>
 
-
-            <div class="information-grid">
-
-                <div class="info-card">
-
-                    <i class="fa-regular fa-user"></i>
-
-                    <div>
-                        <span>Full Name</span>
-
-                        <strong id="infoName">
-                            Beatzo User
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fa-regular fa-envelope"></i>
-
-                    <div>
-                        <span>Email Address</span>
-
-                        <strong id="infoEmail">
-                            user@beatzo.com
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fa-solid fa-calendar"></i>
-
-                    <div>
-                        <span>Member Since</span>
-
-                        <strong>September 2026</strong>
-                    </div>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <i class="fa-solid fa-globe"></i>
-
-                    <div>
-                        <span>Account Type</span>
-
-                        <strong>Free Member</strong>
-                    </div>
-
-                </div>
-
+            <div class="favorites-grid" id="favoritesGrid">
+                <!-- Dynamically populated from beatzoLikedSongs or featured tracks -->
             </div>
-
         </section>
 
 
-        <!-- Preferences -->
-
+        <!-- Streaming & Audio Preferences -->
         <section class="profile-section">
-
-            <div class="section-title">
-
+            <div class="section-header">
                 <div>
-                    <span>SETTINGS</span>
-                    <h2>Preferences</h2>
+                    <span class="section-tag">SETTINGS</span>
+                    <h2>Playback & App Preferences</h2>
+                </div>
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-item">
+                    <div class="setting-left">
+                        <div class="setting-icon-box">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <div>
+                            <h4>Studio Quality Streaming</h4>
+                            <p>Stream tracks at lossless 320kbps bit-rate</p>
+                        </div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="prefHiFi">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-left">
+                        <div class="setting-icon-box">
+                            <i class="fa-solid fa-circle-notch"></i>
+                        </div>
+                        <div>
+                            <h4>Vinyl Record Spin Animation</h4>
+                            <p>Animate the realistic spinning vinyl disc when playing</p>
+                        </div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="prefVinyl">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-left">
+                        <div class="setting-icon-box">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <div>
+                            <h4>Dynamic Ambient Glow</h4>
+                            <p>Sync background ambient glow with the current song's album art</p>
+                        </div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="prefGlow">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-left">
+                        <div class="setting-icon-box">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <div>
+                            <h4>Regional Music Alerts</h4>
+                            <p>Get notified when new songs arrive in Tamil, Malayalam, Telugu, Kannada, Hindi & English</p>
+                        </div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="prefAlerts">
+                        <span class="slider"></span>
+                    </label>
                 </div>
 
             </div>
-
-
-            <div class="settings-list">
-
-
-                <div class="setting">
-
-                    <div class="setting-icon">
-                        <i class="fa-solid fa-bell"></i>
-                    </div>
-
-                    <div class="setting-text">
-
-                        <strong>
-                            Notifications
-                        </strong>
-
-                        <span>
-                            Receive updates about new music
-                        </span>
-
-                    </div>
-
-                    <label class="switch">
-
-                        <input
-                            type="checkbox"
-                            checked>
-
-                        <span></span>
-
-                    </label>
-
-                </div>
-
-
-                <div class="setting">
-
-                    <div class="setting-icon">
-                        <i class="fa-solid fa-wifi"></i>
-                    </div>
-
-                    <div class="setting-text">
-
-                        <strong>
-                            Data Saver
-                        </strong>
-
-                        <span>
-                            Reduce data usage while streaming
-                        </span>
-
-                    </div>
-
-                    <label class="switch">
-
-                        <input type="checkbox">
-
-                        <span></span>
-
-                    </label>
-
-                </div>
-
-
-            </div>
-
         </section>
 
 
-        <!-- Logout -->
-
-        <button
-            class="logout-btn"
-            id="logoutBtn">
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            Sign Out
-
-        </button>
-
+        <!-- Sign Out Action -->
+        <div class="logout-section">
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sign Out from Beatzo
+            </button>
+        </div>
 
     </main>
 
 
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="modal-close" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="editProfileForm">
+                <div class="input-group">
+                    <label for="editNameInput">Full Name</label>
+                    <input type="text" id="editNameInput" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="editEmailInput">Email Address</label>
+                    <input type="email" id="editEmailInput" required>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="cancelModalBtn">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JavaScript -->
     <script src="profile.js"></script>
 
 </body>

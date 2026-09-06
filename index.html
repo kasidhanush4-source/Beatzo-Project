@@ -4,25 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatzo - Professional Music Experience</title>
 
-    <title>Beatzo - Music Player</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
     <!-- =========================
-         BACKGROUND
+         DYNAMIC AMBIENT BACKGROUND GLOWS
     ========================== -->
-    <div class="background-glow glow-1"></div>
-    <div class="background-glow glow-2"></div>
+    <div class="background-glow glow-1" id="glow1"></div>
+    <div class="background-glow glow-2" id="glow2"></div>
+    <div class="background-glow glow-3" id="glow3"></div>
 
+    <!-- Floating subtle particles canvas -->
+    <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
 
     <!-- =========================
          SIDEBAR
@@ -33,14 +39,11 @@
             <div class="logo-icon">
                 <i class="fa-solid fa-headphones"></i>
             </div>
-
-            <span>Beatzo</span>
+            <span>Beatzo<span class="logo-accent">.</span></span>
         </div>
-
 
         <!-- Main Navigation -->
         <nav class="main-nav">
-
             <a href="#" class="active" id="homeLink">
                 <i class="fa-solid fa-house"></i>
                 <span>Home</span>
@@ -55,21 +58,18 @@
                 <i class="fa-solid fa-book"></i>
                 <span>Your Library</span>
             </a>
-
         </nav>
-
 
         <div class="menu-title">
             YOUR MUSIC
         </div>
 
-
         <!-- Music Navigation -->
         <nav>
-
             <a href="#" id="likedLink">
                 <i class="fa-solid fa-heart"></i>
                 <span>Liked Songs</span>
+                <span class="nav-badge" id="likedCount">0</span>
             </a>
 
             <a href="#" id="recentLink">
@@ -81,38 +81,43 @@
                 <i class="fa-solid fa-music"></i>
                 <span>Playlists</span>
             </a>
-
         </nav>
 
+        <!-- Languages Quick Filter in Sidebar -->
+        <div class="menu-title">
+            LANGUAGES
+        </div>
+        <nav class="sidebar-lang-nav" id="sidebarLangNav">
+            <a href="#" data-lang="all" class="lang-nav-item active"><i class="fa-solid fa-globe"></i><span>All Music</span></a>
+            <a href="#" data-lang="Tamil" class="lang-nav-item"><i class="fa-solid fa-fire"></i><span>Tamil Hits</span></a>
+            <a href="#" data-lang="Malayalam" class="lang-nav-item"><i class="fa-solid fa-water"></i><span>Malayalam Chill</span></a>
+            <a href="#" data-lang="Telugu" class="lang-nav-item"><i class="fa-solid fa-bolt"></i><span>Telugu Beats</span></a>
+            <a href="#" data-lang="Kannada" class="lang-nav-item"><i class="fa-solid fa-mountain"></i><span>Kannada Waves</span></a>
+            <a href="#" data-lang="Hindi" class="lang-nav-item"><i class="fa-solid fa-sparkles"></i><span>Bollywood Hits</span></a>
+            <a href="#" data-lang="English" class="lang-nav-item"><i class="fa-solid fa-star"></i><span>English Pop</span></a>
+        </nav>
 
         <!-- Sidebar Bottom -->
         <div class="sidebar-bottom">
-
             <div class="premium-box">
-
-                <i class="fa-solid fa-crown"></i>
-
-                <h4>Upgrade Music</h4>
-
-                <p>Enjoy more features with Beatzo.</p>
-
-                <button>
-                    Upgrade
+                <div class="premium-icon-wrap">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <h4>Beatzo Hi-Fi</h4>
+                <p>Lossless 320kbps audio with dynamic visualizer.</p>
+                <button id="upgradeBtn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Experience Pro
                 </button>
-
             </div>
-
         </div>
 
     </aside>
-
 
 
     <!-- =========================
          MAIN
     ========================== -->
     <main class="main">
-
 
         <!-- =========================
              HEADER
@@ -123,391 +128,378 @@
                 <i class="fa-solid fa-bars"></i>
             </div>
 
-
             <div class="search-box">
-
                 <i class="fa-solid fa-magnifying-glass"></i>
-
                 <input
                     type="text"
                     id="searchInput"
-                    placeholder="Search songs, artists..."
+                    placeholder="Search Tamil, Malayalam, Telugu, Kannada, Hindi, English..."
                     autocomplete="off">
-
+                <button class="clear-search" id="clearSearch" title="Clear Search">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
 
+            <div class="header-actions">
+                <div class="sound-wave-badge" id="headerWaveBadge" title="Audio Status">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                    <span class="bar bar-4"></span>
+                </div>
 
-            <a href="profile.html"
-                class="profile"
-                id="profileLink"
-                title="Profile">
-
-                <i class="fa-solid fa-user"></i>
-
-            </a>
+                <a href="profile.html"
+                    class="profile"
+                    id="profileLink"
+                    title="Profile">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
 
         </header>
 
 
-
         <!-- =========================
-             HERO
+             HERO SECTION
         ========================== -->
-        <section class="hero">
+        <section class="hero" id="heroSection">
 
             <div class="hero-content">
 
-                <p class="hero-label">
-                    WELCOME TO
-                </p>
+                <div class="hero-tag">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <span>PREMIUM MULTI-LINGUAL AUDIO</span>
+                </div>
 
                 <h1>
-                    Beatzo
+                    Feel the Beat.<br>
+                    <span class="gradient-text">Live the Music.</span>
                 </h1>
 
-                <h2>
-                    Feel the Beat. Live the Music.
-                </h2>
-
                 <p class="hero-text">
-                    Discover your favorite songs, explore new sounds,
-                    create playlists and enjoy music anytime.
+                    Stream trending chartbusters across <strong class="highlight-lang">Tamil</strong>,
+                    <strong class="highlight-lang">Malayalam</strong>, <strong class="highlight-lang">Telugu</strong>,
+                    <strong class="highlight-lang">Kannada</strong>, <strong class="highlight-lang">Hindi</strong> and
+                    <strong class="highlight-lang">English</strong> with dynamic visuals and studio audio.
                 </p>
 
-                <button class="explore-btn" id="exploreBtn">
+                <!-- Hero Language Pills -->
+                <div class="hero-badges">
+                    <span class="lang-pill" data-lang="Tamil"><i class="fa-solid fa-music"></i> Tamil</span>
+                    <span class="lang-pill" data-lang="Malayalam"><i class="fa-solid fa-music"></i> Malayalam</span>
+                    <span class="lang-pill" data-lang="Telugu"><i class="fa-solid fa-music"></i> Telugu</span>
+                    <span class="lang-pill" data-lang="Kannada"><i class="fa-solid fa-music"></i> Kannada</span>
+                    <span class="lang-pill" data-lang="Hindi"><i class="fa-solid fa-music"></i> Hindi</span>
+                    <span class="lang-pill" data-lang="English"><i class="fa-solid fa-music"></i> English</span>
+                </div>
 
-                    <i class="fa-solid fa-play"></i>
+                <div class="hero-buttons">
+                    <button class="explore-btn" id="exploreBtn">
+                        <i class="fa-solid fa-play"></i>
+                        Start Listening
+                    </button>
 
-                    Explore Music
-
-                </button>
+                    <button class="shuffle-play-btn" id="heroRandomBtn">
+                        <i class="fa-solid fa-shuffle"></i>
+                        Surprise Mix
+                    </button>
+                </div>
 
             </div>
 
-
-            <div class="hero-disc">
-
-                <div class="disc">
-
-                    <i class="fa-solid fa-music"></i>
-
+            <!-- Enhanced Realistic Vinyl Record Disc -->
+            <div class="hero-disc-wrap">
+                <div class="tonearm" id="tonearm">
+                    <div class="tonearm-base"></div>
+                    <div class="tonearm-arm"></div>
+                    <div class="tonearm-head"></div>
                 </div>
 
+                <div class="disc" id="heroVinyl">
+                    <div class="vinyl-groove groove-1"></div>
+                    <div class="vinyl-groove groove-2"></div>
+                    <div class="vinyl-groove groove-3"></div>
+
+                    <div class="disc-center" id="heroDiscCenter">
+                        <img id="heroDiscImg" src="https://c.saavncdn.com/386/Naa-Ready-From-Leo-Tamil-2023-20230622174435-500x500.jpg" alt="Current Album">
+                        <div class="spindle-hole"></div>
+                    </div>
+                </div>
+
+                <div class="hero-equalizer" id="heroEqualizer">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
             </div>
 
         </section>
 
 
+        <!-- =========================
+             LANGUAGE FILTER CHIPS BAR
+        ========================== -->
+        <section class="language-filter-section">
+            <div class="lang-filter-scroll">
+                <button class="filter-chip active" data-lang="all">
+                    <i class="fa-solid fa-globe"></i> All Languages
+                </button>
+                <button class="filter-chip" data-lang="Tamil">
+                    <span class="flag-dot tamil-dot"></span> Tamil
+                </button>
+                <button class="filter-chip" data-lang="Malayalam">
+                    <span class="flag-dot malayalam-dot"></span> Malayalam
+                </button>
+                <button class="filter-chip" data-lang="Telugu">
+                    <span class="flag-dot telugu-dot"></span> Telugu
+                </button>
+                <button class="filter-chip" data-lang="Kannada">
+                    <span class="flag-dot kannada-dot"></span> Kannada
+                </button>
+                <button class="filter-chip" data-lang="Hindi">
+                    <span class="flag-dot hindi-dot"></span> Hindi
+                </button>
+                <button class="filter-chip" data-lang="English">
+                    <span class="flag-dot english-dot"></span> English
+                </button>
+            </div>
+        </section>
+
 
         <!-- =========================
-             DYNAMIC SECTION
+             DYNAMIC SECTION (LIBRARY / LIKED / RECENT)
         ========================== -->
-        <section
-            class="dynamic-section"
-            id="dynamicSection">
+        <section class="dynamic-section" id="dynamicSection">
 
             <div class="dynamic-header">
-
                 <div>
-                    <p class="section-label">
-                        BEATZO
-                    </p>
-
-                    <h2 id="dynamicTitle">
-                        Your Library
-                    </h2>
+                    <p class="section-label">BEATZO COLLECTION</p>
+                    <h2 id="dynamicTitle">Your Library</h2>
                 </div>
 
-                <button
-                    id="closeDynamic"
-                    class="close-dynamic">
-
+                <button id="closeDynamic" class="close-dynamic" title="Close">
                     <i class="fa-solid fa-xmark"></i>
-
                 </button>
-
             </div>
 
+            <div class="dynamic-content" id="dynamicContent">
+                <!-- Dynamically populated via script.js -->
+            </div>
 
-            <div
-                class="dynamic-content"
-                id="dynamicContent">
+        </section>
+
+
+        <!-- =========================
+             REGIONAL MUSIC SPOTLIGHT CARDS
+        ========================== -->
+        <section class="music-section spotlight-section" id="spotlightSection">
+
+            <div class="section-header">
+                <div>
+                    <p class="section-label">CURATED FOR YOU</p>
+                    <h2>Regional Spotlight</h2>
+                </div>
+                <span class="section-subtitle">Pick a genre & immerse yourself</span>
+            </div>
+
+            <div class="spotlight-grid">
+
+                <!-- Tamil Spotlight -->
+                <div class="spotlight-card spotlight-tamil" data-lang="Tamil">
+                    <img src="https://c.saavncdn.com/386/Naa-Ready-From-Leo-Tamil-2023-20230622174435-500x500.jpg" alt="Tamil Hits" class="spotlight-img">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-badge">TAMIL</span>
+                        <h3>Kollywood Anthems</h3>
+                        <p>High-octane mass beats & A.R. Rahman melodies</p>
+                        <button class="spotlight-play-btn" data-lang="Tamil"><i class="fa-solid fa-play"></i> Play</button>
+                    </div>
+                </div>
+
+                <!-- Malayalam Spotlight -->
+                <div class="spotlight-card spotlight-malayalam" data-lang="Malayalam">
+                    <img src="https://c.saavncdn.com/202/Aavesham-Original-Motion-Picture-Soundtrack-Malayalam-2024-20250910150630-500x500.jpg" alt="Malayalam Chill" class="spotlight-img">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-badge">MALAYALAM</span>
+                        <h3>Mollywood Magic</h3>
+                        <p>Sushin Shyam grooves & soothing indie vibes</p>
+                        <button class="spotlight-play-btn" data-lang="Malayalam"><i class="fa-solid fa-play"></i> Play</button>
+                    </div>
+                </div>
+
+                <!-- Telugu Spotlight -->
+                <div class="spotlight-card spotlight-telugu" data-lang="Telugu">
+                    <img src="https://c.saavncdn.com/592/Naatu-Naatu-From-Rrr--Telugu-2021-20211110131000-500x500.jpg" alt="Telugu Beats" class="spotlight-img">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-badge">TELUGU</span>
+                        <h3>Tollywood Bangers</h3>
+                        <p>Energetic chartbusters, Thaman S & DSP hits</p>
+                        <button class="spotlight-play-btn" data-lang="Telugu"><i class="fa-solid fa-play"></i> Play</button>
+                    </div>
+                </div>
+
+                <!-- Kannada Spotlight -->
+                <div class="spotlight-card spotlight-kannada" data-lang="Kannada">
+                    <img src="https://c.saavncdn.com/999/Singara-Siriye-From-Kantara-Kannada-2022-20250307133657-500x500.jpg" alt="Kannada Waves" class="spotlight-img">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-badge">KANNADA</span>
+                        <h3>Sandalwood Sounds</h3>
+                        <p>Divine folklore rhythms from Kantara to KGF</p>
+                        <button class="spotlight-play-btn" data-lang="Kannada"><i class="fa-solid fa-play"></i> Play</button>
+                    </div>
+                </div>
+
+                <!-- Hindi Spotlight -->
+                <div class="spotlight-card spotlight-hindi" data-lang="Hindi">
+                    <img src="https://c.saavncdn.com/191/Kesariya-From-Brahmastra-Hindi-2022-20220717092820-500x500.jpg" alt="Bollywood Hits" class="spotlight-img">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-badge">HINDI</span>
+                        <h3>Bollywood Top 50</h3>
+                        <p>Soulful romantic ballads & party blockbusters</p>
+                        <button class="spotlight-play-btn" data-lang="Hindi"><i class="fa-solid fa-play"></i> Play</button>
+                    </div>
+                </div>
+
+                <!-- English Spotlight -->
+                <div class="spotlight-card spotlight-english" data-lang="English">
+                    <img src="https://c.saavncdn.com/167/Blinding-Lights-English-2019-20191128231033-500x500.jpg" alt="Global Pop" class="spotlight-img">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-badge">ENGLISH</span>
+                        <h3>Global Chartbusters</h3>
+                        <p>Synthwave, Billboard #1s & international hits</p>
+                        <button class="spotlight-play-btn" data-lang="English"><i class="fa-solid fa-play"></i> Play</button>
+                    </div>
+                </div>
 
             </div>
 
         </section>
 
 
-
         <!-- =========================
-             TRENDING SONGS
+             FEATURED & TRENDING SONGS
         ========================== -->
         <section class="music-section" id="trendingSection">
 
             <div class="section-header">
-
                 <div>
-
-                    <p class="section-label">
-                        LISTEN NOW
-                    </p>
-
-                    <h2>
-                        Trending Songs
-                    </h2>
-
+                    <p class="section-label">EXPLORE TUNES</p>
+                    <h2 id="songsSectionTitle">Trending Songs</h2>
                 </div>
 
-                <span id="seeAllSongs">
-                    See All
-                </span>
-
+                <div class="section-controls">
+                    <span class="song-count-pill" id="songCountPill">Showing 24 Songs</span>
+                    <span class="see-all" id="seeAllSongs">Show All</span>
+                </div>
             </div>
 
-
-            <div
-                class="song-grid"
-                id="songList">
-
-
-                <!-- Song 1 -->
-                <div
-                    class="song-card"
-                    data-title="Midnight Dreams"
-                    data-artist="Luna">
-
-                    <div class="album album-1">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Midnight Dreams
-                    </h3>
-
-                    <p>
-                        Luna
-                    </p>
-
-                </div>
-
-
-                <!-- Song 2 -->
-                <div
-                    class="song-card"
-                    data-title="Neon Lights"
-                    data-artist="Alex Ray">
-
-                    <div class="album album-2">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Neon Lights
-                    </h3>
-
-                    <p>
-                        Alex Ray
-                    </p>
-
-                </div>
-
-
-                <!-- Song 3 -->
-                <div
-                    class="song-card"
-                    data-title="Ocean Waves"
-                    data-artist="Maya">
-
-                    <div class="album album-3">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Ocean Waves
-                    </h3>
-
-                    <p>
-                        Maya
-                    </p>
-
-                </div>
-
-
-                <!-- Song 4 -->
-                <div
-                    class="song-card"
-                    data-title="Lost In Time"
-                    data-artist="Nova">
-
-                    <div class="album album-4">
-
-                        <i class="fa-solid fa-music"></i>
-
-                        <button class="card-play">
-
-                            <i class="fa-solid fa-play"></i>
-
-                        </button>
-
-                    </div>
-
-                    <h3>
-                        Lost In Time
-                    </h3>
-
-                    <p>
-                        Nova
-                    </p>
-
-                </div>
-
+            <!-- Interactive Song Grid (Populated dynamically & reactive) -->
+            <div class="song-grid" id="songList">
+                <!-- Songs will be generated by script.js with rich artwork, language tags, and play controls -->
             </div>
 
-
-            <div
-                class="no-results"
-                id="noResults">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <h3>
-                    No songs found
-                </h3>
-
-                <p>
-                    Try searching for another song or artist.
-                </p>
-
+            <!-- No results message -->
+            <div class="no-results" id="noResults">
+                <div class="no-results-icon">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+                <h3>No songs found</h3>
+                <p>We couldn't find matches for your search. Try searching by song title, artist, or language.</p>
+                <button class="reset-search-btn" id="resetSearchBtn">
+                    <i class="fa-solid fa-rotate-left"></i> View All Songs
+                </button>
             </div>
 
         </section>
-
 
 
         <!-- =========================
-             POPULAR ARTISTS
+             POPULAR ARTISTS (WITH REAL PHOTOS)
         ========================== -->
-        <section class="music-section">
+        <section class="music-section artists-section">
 
             <div class="section-header">
-
                 <div>
-
-                    <p class="section-label">
-                        DISCOVER
-                    </p>
-
-                    <h2>
-                        Popular Artists
-                    </h2>
-
+                    <p class="section-label">TOP TALENT</p>
+                    <h2>Popular Artists</h2>
                 </div>
-
-                <span>
-                    See All
-                </span>
-
+                <span class="see-all">Discover More</span>
             </div>
 
+            <div class="artist-grid" id="artistGrid">
 
-            <div class="artist-grid">
-
-
-                <div class="artist">
-
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
+                <!-- Artist 1: Anirudh -->
+                <div class="artist-card" data-artist="Anirudh Ravichander" data-lang="Tamil">
+                    <div class="artist-avatar-wrap">
+                        <img src="https://c.saavncdn.com/artists/Anirudh_Ravichander_004_20231114092404_500x500.jpg" alt="Anirudh Ravichander" class="artist-img">
+                        <button class="artist-play-hover" title="Play Anirudh Hits">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
                     </div>
-
-                    <h3>
-                        Aria
-                    </h3>
-
-                    <p>
-                        Artist
-                    </p>
-
+                    <h3>Anirudh Ravichander</h3>
+                    <p><i class="fa-solid fa-certificate verified-badge"></i> Tamil / Telugu • Rockstar</p>
                 </div>
 
-
-                <div class="artist">
-
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
+                <!-- Artist 2: A.R. Rahman -->
+                <div class="artist-card" data-artist="A.R. Rahman" data-lang="Tamil">
+                    <div class="artist-avatar-wrap">
+                        <img src="https://c.saavncdn.com/artists/A_R_Rahman_004_20231114092415_500x500.jpg" alt="A.R. Rahman" class="artist-img">
+                        <button class="artist-play-hover" title="Play Rahman Hits">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
                     </div>
-
-                    <h3>
-                        Nova
-                    </h3>
-
-                    <p>
-                        Artist
-                    </p>
-
+                    <h3>A.R. Rahman</h3>
+                    <p><i class="fa-solid fa-certificate verified-badge"></i> Tamil / Hindi • Maestro</p>
                 </div>
 
-
-                <div class="artist">
-
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
+                <!-- Artist 3: Sushin Shyam -->
+                <div class="artist-card" data-artist="Sushin Shyam" data-lang="Malayalam">
+                    <div class="artist-avatar-wrap">
+                        <img src="https://c.saavncdn.com/artists/Sushin_Shyam_002_20231114092434_500x500.jpg" alt="Sushin Shyam" class="artist-img">
+                        <button class="artist-play-hover" title="Play Sushin Hits">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
                     </div>
-
-                    <h3>
-                        Luna
-                    </h3>
-
-                    <p>
-                        Artist
-                    </p>
-
+                    <h3>Sushin Shyam</h3>
+                    <p><i class="fa-solid fa-certificate verified-badge"></i> Malayalam • Hitmaker</p>
                 </div>
 
-
-                <div class="artist">
-
-                    <div class="artist-image">
-                        <i class="fa-solid fa-user"></i>
+                <!-- Artist 4: Sid Sriram -->
+                <div class="artist-card" data-artist="Sid Sriram" data-lang="Telugu">
+                    <div class="artist-avatar-wrap">
+                        <img src="https://c.saavncdn.com/artists/Sid_Sriram_003_20231114092445_500x500.jpg" alt="Sid Sriram" class="artist-img">
+                        <button class="artist-play-hover" title="Play Sid Sriram Hits">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
                     </div>
+                    <h3>Sid Sriram</h3>
+                    <p><i class="fa-solid fa-certificate verified-badge"></i> Telugu / Tamil • Soul</p>
+                </div>
 
-                    <h3>
-                        Alex Ray
-                    </h3>
+                <!-- Artist 5: Arijit Singh -->
+                <div class="artist-card" data-artist="Arijit Singh" data-lang="Hindi">
+                    <div class="artist-avatar-wrap">
+                        <img src="https://c.saavncdn.com/artists/Arijit_Singh_002_20231114092408_500x500.jpg" alt="Arijit Singh" class="artist-img">
+                        <button class="artist-play-hover" title="Play Arijit Hits">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <h3>Arijit Singh</h3>
+                    <p><i class="fa-solid fa-certificate verified-badge"></i> Hindi • King of Romance</p>
+                </div>
 
-                    <p>
-                        Artist
-                    </p>
-
+                <!-- Artist 6: The Weeknd -->
+                <div class="artist-card" data-artist="The Weeknd" data-lang="English">
+                    <div class="artist-avatar-wrap">
+                        <img src="https://c.saavncdn.com/artists/The_Weeknd_002_20200320144930_500x500.jpg" alt="The Weeknd" class="artist-img">
+                        <button class="artist-play-hover" title="Play The Weeknd Hits">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <h3>The Weeknd</h3>
+                    <p><i class="fa-solid fa-certificate verified-badge"></i> English • Global Pop Icon</p>
                 </div>
 
             </div>
 
         </section>
-
 
         <!-- Bottom spacing -->
         <div class="bottom-space"></div>
@@ -515,114 +507,102 @@
     </main>
 
 
-
     <!-- =========================
-         MUSIC PLAYER
+         PROFESSIONAL MUSIC PLAYER
     ========================== -->
-    <footer class="player">
+    <footer class="player" id="mainPlayer">
 
-
-        <!-- Current Song -->
+        <!-- Now Playing Details -->
         <div class="now-playing">
-
-            <div class="mini-album">
-
-                <i class="fa-solid fa-music"></i>
-
+            <div class="mini-album-wrap">
+                <img id="playerAlbumArt" src="https://c.saavncdn.com/386/Naa-Ready-From-Leo-Tamil-2023-20230622174435-500x500.jpg" alt="Playing" class="mini-album-img">
+                <div class="player-mini-visualizer" id="playerMiniVisualizer">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
-
 
             <div class="current-song-info">
-
-                <h4 id="currentTitle">
-                    Select a song
-                </h4>
-
-                <p id="currentArtist">
-                    Beatzo
-                </p>
-
+                <div class="title-row">
+                    <h4 id="currentTitle">Select a song</h4>
+                    <span class="player-lang-badge" id="playerLangBadge">BEATZO</span>
+                </div>
+                <p id="currentArtist">Discover music across 6 languages</p>
             </div>
 
-
-            <button
-                id="likeBtn"
-                class="player-like">
-
+            <button id="likeBtn" class="player-like" title="Add to Liked Songs">
                 <i class="fa-regular fa-heart"></i>
-
             </button>
-
         </div>
 
 
-
-        <!-- Player Controls -->
+        <!-- Center Controls & Scrubbing -->
         <div class="player-center">
 
             <div class="controls">
+                <button id="shuffleBtn" class="control-btn" title="Toggle Shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
 
-                <button id="prevBtn">
+                <button id="prevBtn" class="control-btn" title="Previous Song">
                     <i class="fa-solid fa-backward-step"></i>
                 </button>
 
-
-                <button
-                    class="play-btn"
-                    id="playBtn">
-
+                <button class="play-btn" id="playBtn" title="Play/Pause">
                     <i class="fa-solid fa-play"></i>
-
                 </button>
 
-
-                <button id="nextBtn">
+                <button id="nextBtn" class="control-btn" title="Next Song">
                     <i class="fa-solid fa-forward-step"></i>
                 </button>
 
+                <button id="repeatBtn" class="control-btn" title="Toggle Repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
             </div>
 
-
             <div class="progress-container">
-
-                <span id="currentTime">
-                    0:00
-                </span>
-
-                <input
-                    type="range"
-                    id="progress"
-                    min="0"
-                    max="225"
-                    value="0">
-
-                <span id="duration">
-                    0:00
-                </span>
-
+                <span id="currentTime">0:00</span>
+                <div class="progress-bar-wrapper">
+                    <input
+                        type="range"
+                        id="progress"
+                        min="0"
+                        max="100"
+                        value="0"
+                        step="0.1">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span id="duration">0:00</span>
             </div>
 
         </div>
 
 
-
-        <!-- Volume -->
+        <!-- Volume & Audio Visualizer Options -->
         <div class="volume">
+            <button id="visualizerToggleBtn" class="control-btn-subtle active" title="Toggle Visual Effects">
+                <i class="fa-solid fa-chart-simple"></i>
+            </button>
 
-            <i class="fa-solid fa-volume-high"></i>
+            <button id="muteBtn" class="control-btn-subtle" title="Mute/Unmute">
+                <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
+            </button>
 
-            <input
-                type="range"
-                id="volume"
-                min="0"
-                max="100"
-                value="70">
-
+            <div class="volume-slider-wrap">
+                <input
+                    type="range"
+                    id="volume"
+                    min="0"
+                    max="100"
+                    value="80">
+                <div class="volume-fill" id="volumeFill"></div>
+            </div>
         </div>
 
     </footer>
 
-
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
