@@ -1,6 +1,6 @@
 // ==========================================================================
 // BEATZO - PROFESSIONAL LOGIN CONTROLLER
-// Firebase Auth, Guest Mode & Canvas Stardust Particles
+// 100% Picture-Free Holographic Audio Frequency Portal, Firebase Auth & Guest Mode
 // ==========================================================================
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
@@ -76,7 +76,7 @@ if (googleLoginBtn) {
             }, 800);
         } catch (error) {
             console.warn("Google popup error:", error.message);
-            // Seamless demo fallback so user is never blocked by popup blocker or CORS
+            // Seamless demo fallback so user is never blocked
             loginAsDemoUser("Google Listener", "google.listener@beatzo.com");
         }
     });
@@ -164,7 +164,113 @@ if (guestBtn) {
     });
 }
 
-// Canvas Ambient Particles
+// ==========================================================================
+// SUPER VISUAL EFFECT: HOLOGRAPHIC RADIAL FREQUENCY PORTAL (NO PICTURES)
+// ==========================================================================
+
+const portalCanvas = document.getElementById("portalCanvas");
+if (portalCanvas) {
+    const pCtx = portalCanvas.getContext("2d");
+    const pWidth = portalCanvas.width;
+    const pHeight = portalCanvas.height;
+    const centerX = pWidth / 2;
+    const centerY = pHeight / 2;
+    const baseRadius = 45;
+    const totalBars = 36;
+    let time = 0;
+    let isHovered = false;
+
+    const portalEl = document.getElementById("audioVisualPortal");
+    if (portalEl) {
+        portalEl.addEventListener("mouseenter", () => { isHovered = true; });
+        portalEl.addEventListener("mouseleave", () => { isHovered = false; });
+    }
+
+    // Floating orbital spark embers
+    const sparks = [];
+    for (let i = 0; i < 18; i++) {
+        sparks.push({
+            angle: Math.random() * Math.PI * 2,
+            distance: baseRadius + Math.random() * 45,
+            speed: (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1),
+            size: Math.random() * 2 + 1,
+            color: Math.random() > 0.5 ? "#00e5ff" : "#e02bfb"
+        });
+    }
+
+    function drawPortalVisualizer() {
+        pCtx.clearRect(0, 0, pWidth, pHeight);
+        time += isHovered ? 0.07 : 0.035;
+
+        // 1. Draw Radial Equalizer Bars
+        for (let i = 0; i < totalBars; i++) {
+            const angle = (i / totalBars) * (Math.PI * 2) + (time * 0.2);
+            // Simulated multi-frequency harmonic wave
+            const wave1 = Math.sin(i * 0.6 + time * 2);
+            const wave2 = Math.cos(i * 1.2 - time * 3);
+            const wave3 = Math.sin(time * 4 + i);
+            const intensity = Math.abs(wave1 * 0.5 + wave2 * 0.35 + wave3 * 0.25);
+            const barHeight = (isHovered ? 26 : 18) * intensity + 6;
+
+            const startX = centerX + Math.cos(angle) * (baseRadius + 4);
+            const startY = centerY + Math.sin(angle) * (baseRadius + 4);
+            const endX = centerX + Math.cos(angle) * (baseRadius + 4 + barHeight);
+            const endY = centerY + Math.sin(angle) * (baseRadius + 4 + barHeight);
+
+            // Radial Neon Gradient
+            const grad = pCtx.createLinearGradient(startX, startY, endX, endY);
+            if (i % 3 === 0) {
+                grad.addColorStop(0, "rgba(0, 229, 255, 0.9)");
+                grad.addColorStop(1, "rgba(122, 77, 251, 0.4)");
+            } else if (i % 3 === 1) {
+                grad.addColorStop(0, "rgba(224, 43, 251, 0.9)");
+                grad.addColorStop(1, "rgba(0, 229, 255, 0.4)");
+            } else {
+                grad.addColorStop(0, "rgba(255, 64, 129, 0.9)");
+                grad.addColorStop(1, "rgba(255, 171, 0, 0.4)");
+            }
+
+            pCtx.beginPath();
+            pCtx.moveTo(startX, startY);
+            pCtx.lineTo(endX, endY);
+            pCtx.strokeStyle = grad;
+            pCtx.lineWidth = 2.4;
+            pCtx.lineCap = "round";
+            pCtx.shadowColor = i % 2 === 0 ? "#00e5ff" : "#e02bfb";
+            pCtx.shadowBlur = 8;
+            pCtx.stroke();
+        }
+
+        // 2. Draw Floating Orbital Sparks
+        pCtx.shadowBlur = 10;
+        sparks.forEach(s => {
+            s.angle += s.speed * (isHovered ? 2 : 1);
+            const sx = centerX + Math.cos(s.angle) * s.distance;
+            const sy = centerY + Math.sin(s.angle) * s.distance;
+
+            pCtx.beginPath();
+            pCtx.arc(sx, sy, s.size, 0, Math.PI * 2);
+            pCtx.fillStyle = s.color;
+            pCtx.shadowColor = s.color;
+            pCtx.fill();
+        });
+
+        // 3. Pulsing Frequency Energy Ring
+        pCtx.beginPath();
+        pCtx.arc(centerX, centerY, baseRadius + 3, 0, Math.PI * 2);
+        pCtx.strokeStyle = "rgba(0, 229, 255, 0.4)";
+        pCtx.lineWidth = 1;
+        pCtx.stroke();
+
+        requestAnimationFrame(drawPortalVisualizer);
+    }
+    drawPortalVisualizer();
+}
+
+// ==========================================================================
+// BACKGROUND CANVAS PARTICLES
+// ==========================================================================
+
 const canvas = document.getElementById("ambientCanvas");
 if (canvas) {
     const ctx = canvas.getContext("2d");
