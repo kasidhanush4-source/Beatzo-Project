@@ -302,6 +302,7 @@ body {
     font-size: 26px;
     background: linear-gradient(135deg, var(--cyan) 0%, #ffffff 50%, var(--secondary) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 10px var(--cyan));
     animation: coreIconPulse 2s ease-in-out infinite alternate;
@@ -376,6 +377,7 @@ body {
 .gradient-text {
     background: linear-gradient(90deg, #ffffff 0%, #c49eff 50%, #00e5ff 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
